@@ -1,0 +1,15 @@
+#first install "RODBC" package from command line 
+install.packages("RODBC")
+#Using RODBC library
+library(RODBC)
+#storing connection information into a string
+MyDBConn <- odbcDriverConnect(connection="Driver={SQL Server Native Client 11.0};server=DEVSERVER;database=DevelopmentDB;trusted_connection=yes;")
+#storing query into SQLQueryOne 
+SQLQueryOne = "SELECT TOP 10 * FROM [dbo].[TestTable] Pa WHERE Pa.Year = 2018"  
+#Execute query SQLQueryOne 
+SQLCommand <- sqlQuery(MyDBConn, SQLQueryOne )
+#assign data result into data_table
+data_table <- SQLCommand 
+
+# you can see result of data 
+View(data_table)
