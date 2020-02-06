@@ -1,0 +1,7 @@
+file_location <- "c:/datatable.txt"
+initial <- read.table(file_location, nrows = 1000) 
+
+## read only certain column
+classes <- sapply(initial, class ) 
+column_read <- read.table( file_location , colClasses = classes)
+
