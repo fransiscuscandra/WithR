@@ -1,0 +1,18 @@
+library(RODBC)
+##below is connection using userid and pswd
+channel1 <- odbcConnect("Development_UserId", uid="UserId001", pwd="Pwd12345")   
+
+## assign query to variable 
+query <- paste("SELECT TOP 10 * FROM dbo.TestTable ") 
+
+##make sure all connection is closed
+closeAllConnections() 
+
+##execute query
+data_table <- sqlQuery(channel= channel1 , query )
+
+##print 100 row from data_table 
+print(data_table, max=100)
+
+##close connection when finished
+closeAllConnections()
