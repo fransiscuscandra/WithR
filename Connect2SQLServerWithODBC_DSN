@@ -1,0 +1,18 @@
+library(RODBC)
+
+## assigning ODBC_DSN to db_connection
+## DSN ODBC has to be created in local computer 
+## and has to be able to connect sucessfully to SQL Server
+dbconnection <- odbcConnect("ODBC_DSN")
+
+##assign query to SQLCommand
+SQLCommand <- sqlQuery(dbconnection, "SELECT TOP 10 * FROM [dbo].[testTable]  WHERE Year = 2018" )
+
+##execute SQLcommand
+data_table <- SQLCommand 
+
+##view data
+View(data_table)
+
+##close all connection when finished
+odbcCloseAll()
